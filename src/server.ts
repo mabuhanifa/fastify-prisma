@@ -1,5 +1,5 @@
 import Fastify from "fastify";
-import userRoutes from "./modules/user/user.schema";
+import userRoutes from "./modules/user/user.route";
 const server = Fastify();
 const port = Number(process.env.PORT) || 3000;
 
