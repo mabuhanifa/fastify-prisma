@@ -2,7 +2,7 @@ import Fastify from "fastify";
 const server = Fastify();
 const port = Number(process.env.PORT) || 3000;
 
-server.get("/healthcheck", async (request, response) => {
+server.get("/healthcheck", async () => {
   return { status: "ok" };
 });
 
