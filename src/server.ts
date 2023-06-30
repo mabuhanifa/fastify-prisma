@@ -1,4 +1,5 @@
 import Fastify from "fastify";
+import userRoutes from "./modules/user/user.schema";
 const server = Fastify();
 const port = Number(process.env.PORT) || 3000;
 
@@ -7,12 +8,15 @@ server.get("/healthcheck", async () => {
 });
 
 async function main() {
+  // routes
+  server.register(userRoutes, { prefix: "api/users" });
+
   try {
     server.get("/", async (request, response) => {
       return { hello: "world" };
     });
 
-    await server.listen(3000, "0.0.0.0");
+    await server.listen({ port: port });
     console.log(`Server listening at ${port}`);
   } catch (error) {
     console.error(error);
